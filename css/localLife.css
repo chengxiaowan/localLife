@@ -1,0 +1,314 @@
+ /* 移动端布局换算rem，html的font-size=13.3334时，100px=1rem */
+
+ html {
+     font-size: 13.3334vw;
+ }
+
+ .body {
+     /* padding-bottom: 500px; */
+     background-color: #f9f9f9;
+ }
+
+ .header {
+     width: 100%;
+     height: .91rem;
+     background: #fff;
+     display: flex;
+ }
+
+ .header>.back_btn {
+     width: .2rem;
+     height: .37rem;
+     background: url("../img/back.png");
+     background-size: .2rem .37rem;
+     margin-left: .4rem;
+     margin-top: .27rem;
+     background-repeat: no-repeat;
+ }
+
+ .header>.header-title {
+     /* width: 1.42rem; */
+     font-size: .36rem;
+     font-family: PingFang SC;
+     font-weight: bold;
+     color: #343434;
+     line-height: .91rem;
+     margin-left: 2.48rem;
+ }
+
+ .header>.local {
+     font-size: 0.29rem;
+     font-family: PingFang SC;
+     font-weight: bold;
+     color: #343434;
+     margin-top: .31rem;
+     margin-left: 1.6rem;
+ }
+
+ .icon-down {
+     display: inline-block;
+     width: .19rem;
+     height: .15rem;
+     background: url("../img/xia.png");
+     background-size: .19rem .1rem;
+     margin-left: .05rem;
+     background-repeat: no-repeat;
+ }
+
+ .banner {
+     width: 100%;
+     height: 3.32rem;
+     /* background: #07cbc9; */
+     position: relative;
+ }
+
+ /*插件尺寸调整*/
+
+ #full_feature {
+     padding-top: 44.5%!important;
+ }
+
+ /*去掉控制按钮*/
+
+ .sw-next-prev {
+     display: none;
+ }
+
+ .menu {
+     width: 100%;
+     height: 1.8rem;
+     /* background-color: #07cbc9; */
+     display: flex;
+     justify-content: space-around;
+ }
+
+ .menu-item {
+     margin-top: .21rem;
+ }
+
+ .menu-icon {
+     display: block;
+     width: 1.11rem;
+     height: 1.11rem;
+ }
+
+ .menu-item>p {
+     font-size: 0.24rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #343434;
+     text-align: center;
+ }
+
+ .adv {
+     width: 100%;
+     height: 1.4rem;
+     padding-top: .22rem;
+     background-color: #f9f9f9;
+     padding-bottom: .23rem;
+ }
+
+ .adv>img {
+     display: block;
+     width: 6.8rem;
+     height: 1.4rem;
+     margin: 0 auto;
+ }
+
+ .main {
+     width: 6.8rem;
+     /* height: 4.1rem; */
+     margin-left: .35rem;
+     background-color: #f9f9f9;
+     /* margin-top: .23rem; */
+     background-image: url("../img/bgs.png");
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     border-radius: .08rem;
+ }
+
+ .main-title {
+     /* background: url("../img/bg_t.png"); */
+     width: 100%;
+     height: .66rem;
+     /* background-size: 6.8rem .66rem; */
+     font-size: 0.28rem;
+     font-family: PingFang SC;
+     font-weight: bold;
+     color: #FFFFFF;
+     text-align: center;
+     line-height: .66rem;
+ }
+
+ .icon-line {
+     display: inline-block;
+     width: .19rem;
+     height: .25rem;
+     background: url("../img/line.png");
+     background-size: .19rem .25rem;
+     background-repeat: no-repeat;
+ }
+
+ .main-info {
+     width: 100%;
+     height: 4.1rem;
+     background-image: url("../img/bg.png");
+     background-size: 100% 100%;
+ }
+
+ .dingdong {
+     width: 2.53rem;
+     height: 2.97rem;
+     background-image: url("../img/tj_yi.png");
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     margin-left: .13rem;
+     float: left;
+     margin-top: .25rem;
+ }
+
+ .icon-dingdong {
+     display: block;
+     width: .91rem;
+     height: .91rem;
+     margin-top: .23rem;
+     margin-left: .21rem;
+ }
+
+ .dingdong :nth-child(2) {
+     font-size: 0.24rem;
+     font-family: PingFang SC;
+     font-weight: bold;
+     color: #000000;
+     margin-top: .24rem;
+     margin-left: 1.24rem;
+ }
+
+ .dingdong :nth-child(3) {
+     font-size: 0.2rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #333333;
+     margin-left: 1.24rem;
+     margin-top: 0.13rem;
+ }
+
+ .btn-quan {
+     width: 1.22rem;
+     height: .28rem;
+     background: #FF7979;
+     border-radius: .14rem;
+     font-size: .18rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #FFFFFF;
+     line-height: .28rem;
+     text-align: center;
+     margin-left: 1.14rem;
+     margin-top: .31rem;
+ }
+
+ .min-item {
+     width: 3.86rem;
+     height: 1.35rem;
+     background: url("../img/tj_er.png");
+     background-size: 100%;
+     background-repeat: no-repeat;
+     margin-left: 2.82rem;
+     /* margin-top: .25rem; */
+     position: relative;
+ }
+
+ .icon-item {
+     display: block;
+     width: .7rem;
+     height: .7rem;
+     position: absolute;
+     top: .3rem;
+     right: .24rem;
+ }
+
+ .min-item :nth-child(1) {
+     position: absolute;
+     top: .2rem;
+     left: .2rem;
+     font-size: 0.28rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #000000;
+ }
+
+ .min-item :nth-child(2) {
+     position: absolute;
+     top: .56rem;
+     left: .18rem;
+     font-size: 0.2rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #333333;
+ }
+
+ .item-btn {
+     position: absolute;
+     top: .92rem;
+     left: .17rem;
+     margin: 0;
+ }
+
+ .footer {
+     width: 100%;
+     height: .98rem;
+     position: fixed;
+     bottom: 0;
+     /* background-color: #07cbc9; */
+     display: flex;
+     justify-content: space-around;
+     background-color: #fff;
+ }
+
+ .footer-item {
+     margin-top: .12rem;
+     width: 1rem;
+     /* height: .25rem; */
+ }
+
+ .footer-item>img {
+     display: block;
+     width: .5rem;
+     height: .46rem;
+     margin: 0 auto
+ }
+
+ .footer-item>p {
+     font-size: 0.24rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #FB6568;
+     text-align: center;
+ }
+
+ .share {
+     display: block;
+     width: 1.29rem;
+     height: 1.35rem;
+     position: fixed;
+     bottom: 1rem;
+     right: .17rem;
+ }
+
+ .newlocal {
+     /* width: 1.2rem; */
+     height: .5rem;
+     background: rgba(127, 127, 127, .5);
+     font-size: 0.28rem;
+     font-family: PingFang SC;
+     font-weight: 500;
+     color: #FFFFFF;
+     text-align: center;
+     line-height: .5rem;
+     position: absolute;
+     top:.2rem;
+     right: .18rem;
+     padding: 0 .15rem;
+     border-radius: .1rem;
+ }

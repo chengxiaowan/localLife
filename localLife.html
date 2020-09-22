@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地生活</title>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/localLife.css">
+    <link rel="stylesheet" href="./css/swipeslider.css">
+</head>
+
+<body>
+    <!-- 标题盒子 -->
+    <div id="app">
+        <div class="header">
+            <div class="back_btn"></div>
+            <div class="header-title">本地生活</div>
+            <!-- <div class="local">
+                {{local.city}}
+                <i class="icon-down"></i>
+            </div> -->
+        </div>
+        <div class="banner">
+            <figure id="full_feature" class="swipslider">
+                <ul class="sw-slides">
+                    <li class="sw-slide">
+                        <img src="./img/banner.png" alt="Summer beach concept">
+                    </li>
+                    <li class="sw-slide">
+                        <img src="./img/banner.png" alt="Lang from Yie Ar Kung Fu">
+                    </li>
+                    <li class="sw-slide">
+                        <img src="./img/banner.png" alt="Tiny Tina">
+                    </li>
+                </ul>
+            </figure>
+            <div class="newlocal">
+                {{local.city}}
+                <i class="icon-down"></i>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-item">
+                <img src="./img/meis.png" alt="" class="menu-icon">
+                <p>美食</p>
+            </div>
+            <div class="menu-item">
+                <img src="./img/yinp.png" alt="" class="menu-icon">
+                <p>饮品</p>
+            </div>
+            <div class="menu-item">
+                <img src="./img/yule.png" alt="" class="menu-icon">
+                <p>娱乐</p>
+            </div>
+            <div class="menu-item">
+                <img src="./img/huiy.png" alt="" class="menu-icon">
+                <p>加入会员</p>
+            </div>
+        </div>
+
+        <div class="adv">
+            <img src="./img/ruzhu.png" alt="入驻">
+        </div>
+
+        <div style="background-color: #f9f9f9;">
+            <div class="main">
+                <div class="main-title">
+                    <i class="icon-line" style="margin-right:.15rem;"></i>
+                    精选推荐
+                    <i class="icon-line" style="margin-left:.15rem;"></i>
+                </div>
+                <div class="main-info">
+                    <div class="dingdong" @click="info()">
+                        <img class="icon-dingdong" src="./img/dingdong.png" alt="">
+                        <p>叮咚买菜</p>
+                        <p>鲜到鲜得</p>
+                        <div class="btn-quan">领取优惠券</div>
+                    </div>
+                    <div style="height:.25rem;"></div>
+                    <div class="min-item" @click="msw()">
+                        <p>猫山屋智慧酒店</p>
+                        <p>388起</p>
+                        <div class="btn-quan item-btn">领取优惠券</div>
+                        <img class="icon-item" src="./img/msw.png" alt="">
+
+                    </div>
+                    <div class="min-item" style="margin-top: .25rem;" @click="keep()">
+                        <p>KEEP</p>
+                        <p>跑步健身计步瑜伽</p>
+                        <div class="btn-quan item-btn">领取优惠券</div>
+                        <img class="icon-item" src="./img/keep.png" alt="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 1rem;background-color: #f9f9f9;"></div>
+
+        <div class="footer">
+            <div class="footer-item">
+                <img src="./img/shouye.png">
+                <p>首页</p>
+            </div>
+
+            <div class="footer-item">
+                <img src="./img/huiyuan.png">
+                <p style="color: #999999;">会员</p>
+            </div>
+
+            <div class="footer-item">
+                <img src="./img/hyzx.png">
+                <p style="color: #999999;">会员中心</p>
+            </div>
+        </div>
+        <img class="share" src="./img/share.png" alt="">
+    </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/swipeslider.min.js"></script>
+<!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=g0mc8spQKx8Wwd8ViIT1omBPi4xkK9wo"></script> -->
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="./js/vue.min.js"></script>
+<script>
+    $(window).load(function () {
+        $('#full_feature').swipeslider();
+    })
+
+    window.app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                local:{},
+            }
+        },
+
+        methods: {
+            info() {
+                window.location.href = "http://activity.m.y.dingdongxiaoqu.com/#/coupon?code=ueSex&btnType=jumpApp&path=ddxq%3A%2F%2Fproduct%2Fhome"
+            },
+
+            keep() {
+                window.location.href = "https://apm-sd.gotokeep.com/r/uD "
+            },
+
+
+            position() {
+                const that = this
+                $.getJSON(`https://restapi.amap.com/v3/ip?ip=${returnCitySN.cip}&output=json&key=38c9af1bdfe4c00c4992851af23af6e2`)
+                .then(res=>{
+                    console.log(res)
+                    that.local = res
+                })
+            },
+
+            msw(){
+                window.location.href = './Vip.html'
+            }
+
+        },
+
+
+        mounted() {
+            console.log("Vue is mouted")
+            console.log(returnCitySN)
+            this.position()
+
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css//public.css">
+    <link rel="stylesheet" href="./css/vip.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="header-bg"></div>
+        <div class="header-card">
+            <img src="./img/msw.png" alt="" class="msw">
+            <div class="info-box">
+                <p class="title-box">
+                    猫山屋智慧酒店
+                </p>
+                <p class="price-box">
+                    <span>30元</span>代金券
+                </p>
+            </div>
+            <div class="btn-box" v-if="flag">立即领取</div>
+            <img src="./img/OK.png" alt="" class="ok" v-if="!flag">
+
+        </div>
+
+        <div class="remark-box">
+            <div style="height: .32rem;"></div>
+            <h3>酒店权益</h3>
+            <p>
+                一、首次入住享受猫山屋智慧酒店一张价值30元代金券，直接在各门店门市价基础上抵用，门店门市价参考当天大堂房价牌OTA售价。
+            </p>
+            <p>
+                二、每间房赠送2份早餐，价值56元。
+            </p>
+            <p>
+                三、退房时间延迟至14：00。
+            </p>
+            <p>
+                四、门店自助洗衣服务。
+            </p>
+            <p>
+                五、享受猫山屋VIP增值服务欢迎甜品2份，门店根据季节、天气制定不同的欢迎甜品，通
+                常有：银耳羹、雪梨羹、酸梅汤、绿豆汤等。
+            </p>
+            <p>
+                六、享受猫山屋VIP增值服务：猫山王冰激凌2份
+            </p>
+            <p>
+                七、代金券适用于门店过夜房抵用，同时房价折扣与门店活动不可以同时享用。
+            </p>
+            <p>
+                八、适用门店：<br/>
+                常州新北万达广场店、常州湖塘新城帝景店、溧阳高铁万达广场店、南通万象城店。
+            </p>
+        </div>
+
+        <div class="login-card" v-if="!islogin">
+            <div class="login-box">
+                <h3>登录</h3>
+                <div class="tel">
+                    <i class="icon-tel"></i>
+                    <input type="text" class="tel-input" placeholder="请输入手机号码" autocomplete="off">
+                </div>
+
+                <div class="code">
+                    <i class="icon-code"></i>
+                    <input type="number" class="tel-input te" placeholder="请输入验证码" autocomplete="off">
+                    <span class="getcode">获取验证码</span>
+                </div>
+
+                <div class="btn-login">
+                    登录
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/vue.min.js"></script>
+<script>
+    window.app = new Vue({
+        el:"#app",
+        data () {
+            return {
+                flag:false,     //是否购买
+                islogin:true    //是否登录
+            }
+        },
+        methods: {
+            
+        },
+
+        mounted () {
+            
+        }
+    })
+</script>
+
+</html>
