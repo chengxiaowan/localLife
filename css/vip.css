@@ -129,7 +129,7 @@
      height: 5.84rem;
      background-color: #fff;
      border-radius: .08rem;
-     position: absolute;
+     position: fixed;
      top: 2.8rem;
      left: .89rem;
      overflow: hidden;
