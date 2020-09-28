@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>Document</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>猫山屋智慧酒店</title>
     <link rel="stylesheet" href="./css//public.css">
     <link rel="stylesheet" href="./css/vip.css">
 </head>
@@ -53,49 +54,148 @@
                 七、代金券适用于门店过夜房抵用，同时房价折扣与门店活动不可以同时享用。
             </p>
             <p>
-                八、适用门店：<br/>
+                八、适用门店：<br />
                 常州新北万达广场店、常州湖塘新城帝景店、溧阳高铁万达广场店、南通万象城店。
             </p>
         </div>
 
-        <div class="login-card" v-if="!islogin">
-            <div class="login-box">
-                <h3>登录</h3>
-                <div class="tel">
-                    <i class="icon-tel"></i>
-                    <input type="text" class="tel-input" placeholder="请输入手机号码" autocomplete="off">
-                </div>
+        <div class="login-card" v-if="!islogin" @click="islogin=true"></div>
+        <div class="login-box" style="position: fixed;z-index: 8;" v-if="!islogin">
+            <h3>登录</h3>
+            <div class="tel">
+                <i class="icon-tel"></i>
+                <input type="text" class="tel-input" placeholder="请输入手机号码" autocomplete="off" v-model="tel"
+                    maxlength="11">
+            </div>
+            <div class="code">
+                <i class="icon-code"></i>
+                <input type="number" class="tel-input te" placeholder="请输入验证码" autocomplete="off" v-model="code"
+                    maxlength="6">
+                <span class="getcode" @click="getcode()" v-if="!iscode">获取验证码</span>
+                <span class="getcode" @click="getcode()" v-if="iscode" style="margin-left: 1.6rem;">{{time}}</span>
+            </div>
 
-                <div class="code">
-                    <i class="icon-code"></i>
-                    <input type="number" class="tel-input te" placeholder="请输入验证码" autocomplete="off">
-                    <span class="getcode">获取验证码</span>
-                </div>
-
-                <div class="btn-login">
-                    登录
-                </div>
+            <div class="btn-login" @click="login()">
+                登录
             </div>
         </div>
     </div>
 </body>
 <script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.md5.js"></script>
+<script src="./js/commons.js"></script>
 <script src="./js/vue.min.js"></script>
 <script>
+    var config = {
+        api_code: api_url + '/main/getVerificationCode',     //获取验证码
+        api_login: api_url + '/main/register',
+        api_logins: api_url + '/main/h5login'
+
+    }
     window.app = new Vue({
-        el:"#app",
-        data () {
+        el: "#app",
+        data() {
             return {
-                flag:false,     //是否购买
-                islogin:true    //是否登录
+                flag: true,     //是否购买
+                islogin: true,    //是否登录
+                tel: "",
+                code: "",
+                iscode: false,
+                time: "60s",
             }
         },
         methods: {
-            
+            getcode() {
+                if (this.tel == "") {
+                    alert("请输手机号码")
+                    return
+                }
+                var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
+                if (!reg.test(this.tel)) {
+                    alert("请输入正确的手机号码")
+                    return
+                }
+                let timeStamp = (new Date()).getTime()
+                let sign = `123phone=${this.tel}&timeStamp=${timeStamp}123`
+                this.iscode = true
+                $.ajax({
+                    url: config.api_code,
+                    type: "POST",
+                    data: {
+                        sign: $.md5(sign).toUpperCase(),
+                        timeStamp: timeStamp,
+                        phone: this.tel
+
+                    },
+                    success: res => {
+                        if (res.error == "00") {
+                            var i = 60;
+                            var timeout = setInterval(() => {
+                                this.time = `${i--}s`
+                                if (i == 0) {
+                                    window.clearInterval(timeout)
+                                    this.iscode = false
+                                }
+                            }, 1000)
+                        } else {
+                            alert(res.msg)
+                        }
+                    }
+                })
+            },
+
+            login() {
+                if (this.tel == "") {
+                    alert("请输手机号码")
+                    return
+                }
+                var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
+                if (!reg.test(this.tel)) {
+                    alert("请输入正确的手机号码")
+                    return
+                }
+
+                if (this.code == "") {
+                    alert("请输入验证码")
+                }
+                $.ajax({
+                    url: config.api_login,
+                    type: "POST",
+                    data: {
+                        phone: this.tel,
+                        verificationCode: this.code,
+                        appId: "Yanxsapp"
+                    },
+                    success: res => {
+                        if (res.error == "00") {
+                            let token = res.msg
+                            sessionStorage.setItem("token", token)
+                            this.islogin = true
+                        } else {
+                            alert(res.msg)
+                        }
+                    }
+                })
+            }
         },
 
-        mounted () {
-            
+        mounted() {
+            var token = sessionStorage.getItem("token");
+            console.log(token)
+            if(token == null){
+                this.islogin = false
+            }else{
+                this.islogin = true
+            }
+        },
+
+        watch: {
+            code(val) {
+                console.log(val.length);
+                if (val.length > 6) {
+                    this.code = val.substring(0, 6)
+                }
+            }
         }
     })
 </script>

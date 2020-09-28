@@ -1,0 +1,70 @@
+html {
+    font-size: 13.3334vw;
+    background-color: #f9f9f9;
+}
+
+.body {
+    /* padding-bottom: 500px; */
+    background-color: #f9f9f9;
+}
+
+.header {
+    width: 100%;
+    height: .91rem;
+    background: #fff;
+    display: flex;
+}
+
+.header>.back_btn {
+    width: .2rem;
+    height: .37rem;
+    background: url("../img/back.png");
+    background-size: .2rem .37rem;
+    margin-left: .4rem;
+    margin-top: .27rem;
+    background-repeat: no-repeat;
+}
+
+.header>.header-title {
+    /* width: 1.42rem; */
+    font-size: .36rem;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #343434;
+    line-height: .91rem;
+    margin-left: 2.48rem;
+}
+
+.seach{
+    width: 4.7rem;
+    height: .91rem;
+    /* border: .02rem solid #666; */
+    margin-left: .25rem;
+    position: relative;
+}
+
+.seach-icon{
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    background: url("../img/seach.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -.25rem;
+}
+
+.seach-text{
+    display: block;
+    /* margin-top: .3rem; */
+    height: .91rem;
+    border: none;
+    margin-left: .8rem;
+
+}
+
+.hotlocal{
+    width: 100%;
+    height: 2rem;
+    background-color: #07cbc9;
+}
